@@ -1,4 +1,3 @@
-[submodule "third_party/pigweed"]
-	path = third_party/pigweed
+[submodule "gn/third_party/pigweed"]
+	path = gn/third_party/pigweed
 	url = https://pigweed.googlesource.com/pigweed/pigweed
-	branch = main
