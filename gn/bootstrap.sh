@@ -52,7 +52,7 @@ fi
 PROJECT_ROOT="$(_bootstrap_abspath "$(dirname "$_BOOTSTRAP_PATH")")"
 export PROJECT_ROOT
 PW_PROJECT_ROOT="$PROJECT_ROOT"
-PW_ROOT="$PROJECT_ROOT/../third_party/pigweed"
+PW_ROOT="$PROJECT_ROOT/third_party/pigweed"
 
 # Set your project's banner and color.
 export PW_BRANDING_BANNER="$PROJECT_ROOT/banner.txt"
