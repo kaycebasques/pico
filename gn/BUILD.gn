@@ -1,0 +1,27 @@
+import("//build_overrides/pigweed.gni")
+import("$dir_pw_build/python.gni")
+import("$dir_pw_build/python_dist.gni")
+
+##############
+# Applications
+##############
+
+group("default") {
+  deps = [
+    ":app",
+    ":python.lint",
+    ":python.tests",
+  ]
+}
+
+group("app") {
+  deps = [ "//src:app(//targets/host:my_host_toolchain)" ]
+}
+
+################
+# Python tooling
+################
+
+pw_python_group("python") {
+  python_deps = [ "$dir_pw_env_setup:python" ]
+}
