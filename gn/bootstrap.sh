@@ -64,6 +64,14 @@ project_banner() {
 }
 
 PW_BANNER_FUNC="project_banner"
+
+# Do a full clone of upstream Pigweed rather than struggle with Git submodules.
+PW_URL="https://pigweed.googlesource.com/pigweed/pigweed"
+git clone --recursive $PW_URL
+cd $PW_ROOT
+PW_COMMIT="dea2ecf94d39c9c6f97140190bc6a796d5205b96"
+git checkout $PW_COMMIT
+cd -
 ########## END PROJECT-SPECIFIC CODE ##########
 export PW_BANNER_FUNC
 export PW_PROJECT_ROOT
