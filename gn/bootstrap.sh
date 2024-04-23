@@ -69,7 +69,7 @@ PW_BANNER_FUNC="project_banner"
 PW_URL="https://pigweed.googlesource.com/pigweed/pigweed"
 git clone --recursive $PW_URL $PW_ROOT
 cd $PW_ROOT
-PW_COMMIT="dea2ecf94d39c9c6f97140190bc6a796d5205b96"
+PW_COMMIT="990b5f8ea0be1cc97f743253c5a7da516a1e0170"  # 2024 Apr 1
 git checkout $PW_COMMIT
 cd -
 ########## END PROJECT-SPECIFIC CODE ##########
