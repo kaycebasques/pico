@@ -1,11 +1,9 @@
-# host
+# gn
 
 ## Setup
 
 ```
 git clone --recursive git@github.com:kaycebasques/host.git
-# Shouldn't be necessary, but just in case...
-git submodule update --init --recursive
 source boostrap.sh
 gn gen out
 ```
@@ -13,5 +11,12 @@ gn gen out
 ## Build
 
 ```
+source activate.sh
 ninja -C out
+```
+
+## Run
+
+```
+./out/my_host_toolchain/obj/src/bin/app
 ```
