@@ -12,8 +12,15 @@ pw_executable("hello_world") {
     "hello_world.cc"
   ]
   deps = [
-    dir_pw_log
+    dir_pw_log,
+    "$dir_pw_system:target_hooks",
+    "$dir_pw_thread:thread",
+    "$dir_pw_thread_freertos:thread"
   ]
+  remove_configs = [ "$dir_pw_build:strict_warnings" ]
+  if (pw_build_EXECUTABLE_TARGET_TYPE == "pico_executable") {
+    ldflags = [ "-Wl,--print-memory-usage" ]
+  }
 }
 
 pw_source_set("my_log_backend") {
