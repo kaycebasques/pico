@@ -9,6 +9,7 @@ if (current_toolchain != default_toolchain) {
   pw_source_set("freertos_config") {
     public_configs = [ ":config_includes" ]
     public_deps = [ "$dir_pw_third_party/freertos:config_assert" ]
+    print("dir_pw_third_party/freertos:config_assert=$dir_pw_third_party/freertos:config_assert")
     public = [ "config/FreeRTOSConfig.h" ]
   }
   pw_source_set("pre_init") {
@@ -21,6 +22,7 @@ if (current_toolchain != default_toolchain) {
       "$dir_pw_third_party/freertos",
       # "//lib/rpc:kudzu_service",
     ]
+    print("dir_pw_third_party/freertos=$dir_pw_third_party/freertos")
     sources = [ "boot.cc" ]
   }
 }

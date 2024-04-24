@@ -26,12 +26,12 @@ pw_executable("hello_world") {
   }
 }
 
-pw_source_set("my_log_backend") {
-  sources = [
-    "my_log_backend.c"
-  ]
-}
+# pw_source_set("my_log_backend") {
+#   sources = [
+#     "my_log_backend.c"
+#   ]
+# }
 
-pw_source_set("my_log_backend.impl") {
-  sources = []
-}
+# pw_source_set("my_log_backend.impl") {
+#   sources = []
+# }
