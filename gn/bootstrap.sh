@@ -52,43 +52,47 @@ fi
 PROJECT_ROOT="$(_bootstrap_abspath "$(dirname "$_BOOTSTRAP_PATH")")"
 export PROJECT_ROOT
 PW_PROJECT_ROOT="$PROJECT_ROOT"
-PW_ROOT="$PROJECT_ROOT/third_party/pigweed"
 
 # Set your project's banner and color.
 export PW_BRANDING_BANNER="$PROJECT_ROOT/banner.txt"
 export PW_BRANDING_BANNER_COLOR=magenta
-
 project_banner() {
   cat "$PW_BRANDING_BANNER"
   echo
 }
-
 PW_BANNER_FUNC="project_banner"
 
-# Do a full clones instead of struggling with Git submodules.
-# Upstream Pigweed
-PW_URL="https://github.com/google/pigweed"
-git clone --recursive $PW_URL $PW_ROOT
-cd $PW_ROOT
-PW_COMMIT="dea2ecf94d39c9c6f97140190bc6a796d5205b96"  # 20240423
-git checkout $PW_COMMIT
-cd -
-# FreeRTOS
-FREERTOS_URL="https://github.com/FreeRTOS/FreeRTOS-Kernel"
+# Do full clones of deps instead of struggling with submodules.
+PW_ROOT="$PROJECT_ROOT/third_party/pigweed"
+if [ ! -d $PW_ROOT ]
+then
+  PW_URL="https://github.com/google/pigweed"
+  git clone --recursive $PW_URL $PW_ROOT
+  cd $PW_ROOT
+  PW_COMMIT="dea2ecf94d39c9c6f97140190bc6a796d5205b96"  # 20240423
+  git checkout $PW_COMMIT
+  cd -
+fi
 FREERTOS_ROOT="$PW_PROJECT_ROOT/third_party/freertos"
-FREERTOS_COMMIT="9c048e0c71ee43630394981a86f5265bc57131e4"  # 20201215
-git clone --recursive $FREERTOS_URL $FREERTOS_ROOT
-cd $FREERTOS_ROOT
-git checkout $FREERTOS_COMMIT
-cd -
-# Pico SDK
-PICO_URL="https://github.com/raspberrypi/pico-sdk"
+if [ ! -d $FREERTOS_ROOT ]
+then
+  FREERTOS_URL="https://github.com/FreeRTOS/FreeRTOS-Kernel"
+  FREERTOS_COMMIT="9c048e0c71ee43630394981a86f5265bc57131e4"  # 20201215
+  git clone --recursive $FREERTOS_URL $FREERTOS_ROOT
+  cd $FREERTOS_ROOT
+  git checkout $FREERTOS_COMMIT
+  cd -
+fi
 PICO_ROOT="$PW_PROJECT_ROOT/third_party/pico-sdk"
-PICO_COMMIT="6a7db34ff63345a7badec79ebea3aaef1712f374"  # 20230613
-git clone --recursive $PICO_URL $PICO_ROOT
-cd $PICO_ROOT
-git checkout $PICO_COMMIT
-cd -
+if [ ! -d $PICO_ROOT ]
+then
+  PICO_URL="https://github.com/raspberrypi/pico-sdk"
+  PICO_COMMIT="6a7db34ff63345a7badec79ebea3aaef1712f374"  # 20230613
+  git clone --recursive $PICO_URL $PICO_ROOT
+  cd $PICO_ROOT
+  git checkout $PICO_COMMIT
+  cd -
+fi
 ########## END PROJECT-SPECIFIC CODE ##########
 export PW_BANNER_FUNC
 export PW_PROJECT_ROOT
