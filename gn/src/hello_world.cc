@@ -4,6 +4,7 @@
 
 #include "FreeRTOS.h"
 #include "pico/stdlib.h"
+#include "hardware/gpio.h"
 #include "pw_log/log.h"
 #include "pw_system/target_hooks.h"
 #include "pw_thread/detached_thread.h"
@@ -49,7 +50,7 @@ void UserAppInit() {
   gpio_init(LED_PIN);
   gpio_put(LED_PIN, 1);
   PW_LOG_INFO("UserAppInit");
-  pw::thread::DetachedThread(DisplayDrawThreadOptions(), MainTask);
+  // pw::thread::DetachedThread(DisplayDrawThreadOptions(), MainTask);
 }
 
 }  // namespace pw::system
