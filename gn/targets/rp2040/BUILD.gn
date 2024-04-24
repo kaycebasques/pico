@@ -35,8 +35,7 @@ pw_system_target("rp2040") {
   build_args = {
     pw_build_EXECUTABLE_TARGET_TYPE = "pico_executable"
     pw_build_EXECUTABLE_TARGET_TYPE_FILE =
-        get_path_info("$dir_pigweed/targets/rp2040/pico_executable.gni",
-                      "abspath")
+        get_path_info("$dir_pigweed/targets/rp2040/pico_executable.gni", "abspath")
     pw_log_BACKEND = dir_pw_log_string
     pw_log_string_HANDLER_BACKEND = "$dir_pw_system:log_backend"
     pw_third_party_freertos_CONFIG = "//targets/rp2040:freertos_config"
