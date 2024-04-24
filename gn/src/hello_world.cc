@@ -3,6 +3,7 @@
 #define LIB_CMSIS_CORE 0
 
 #include "FreeRTOS.h"
+#include "pico/stdlib.h"
 #include "pw_log/log.h"
 #include "pw_system/target_hooks.h"
 #include "pw_thread/detached_thread.h"
