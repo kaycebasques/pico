@@ -10,15 +10,14 @@ host = {
     "pw_trace_BACKEND",
     "pw_trace_tokenizer_time",
   ]
-  my_host_toolchain = {
-    name = "my_host_toolchain"
+  host = {
+    name = "host"
     _toolchain_base = pw_target_toolchain_host.clang_debug
     forward_variables_from(_toolchain_base, "*", _excluded_members)
     defaults = {
       forward_variables_from(_toolchain_base.defaults, "*", _excluded_defaults)
       pw_log_BACKEND = dir_pw_log_string
       pw_log_string_HANDLER_BACKEND = "//src:my_log_backend"
-
       # GN asks us to first re-assign to an empty list to explicitly confirm
       # that we want to overwrite this variable.
       pw_build_LINK_DEPS = []
@@ -31,4 +30,4 @@ host = {
   }
 }
 
-toolchains_list = [ host.my_host_toolchain ]
+toolchains_list = [ host.host ]

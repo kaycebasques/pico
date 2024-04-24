@@ -17,7 +17,7 @@ group("default") {
 
 group("apps") {
   deps = [
-    "//src:hello_world(//targets/host:my_host_toolchain)"
+    "//src:hello_world(//targets/host:host)"
   ]
 }
 
