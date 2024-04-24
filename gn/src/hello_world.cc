@@ -4,7 +4,7 @@
 
 int main() {
   while (true) {
-    PW_LOG_INFO("Hello, facades!");
+    PW_LOG_INFO("Hello, world!");
     sleep(5);
   }
   return 0;
