@@ -65,12 +65,29 @@ project_banner() {
 
 PW_BANNER_FUNC="project_banner"
 
-# Do a full clone of upstream Pigweed rather than struggle with Git submodules.
-PW_URL="https://pigweed.googlesource.com/pigweed/pigweed"
+# Do a full clones instead of struggling with Git submodules.
+# Upstream Pigweed
+PW_URL="https://github.com/google/pigweed"
 git clone --recursive $PW_URL $PW_ROOT
 cd $PW_ROOT
-PW_COMMIT="990b5f8ea0be1cc97f743253c5a7da516a1e0170"  # 2024 Apr 1
+PW_COMMIT="dea2ecf94d39c9c6f97140190bc6a796d5205b96"  # 20240423
 git checkout $PW_COMMIT
+cd -
+# FreeRTOS
+FREERTOS_URL="https://github.com/FreeRTOS/FreeRTOS-Kernel"
+FREERTOS_ROOT="$PW_PROJECT_ROOT/third_party/freertos"
+FREERTOS_COMMIT="8e07366994f81354a2d4556ca1da9f73dab781e6"  # 20240423
+git clone --recursive $FREERTOS_URL $FREERTOS_ROOT
+cd $FREERTOS_ROOT
+git checkout $FREERTOS_COMMIT
+cd -
+# Pico SDK
+PICO_URL="https://github.com/raspberrypi/pico-sdk"
+PICO_ROOT="$PW_PROJECT_ROOT/third_party/pico-sdk"
+PICO_COMMIT="6a7db34ff63345a7badec79ebea3aaef1712f374"  # 20230613
+git clone --recursive $PICO_URL $PICO_ROOT
+cd $PICO_ROOT
+git checkout $PICO_COMMIT
 cd -
 ########## END PROJECT-SPECIFIC CODE ##########
 export PW_BANNER_FUNC
