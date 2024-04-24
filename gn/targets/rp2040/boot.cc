@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <array>
 
 // # include "pw_system/rpc_server.h"
@@ -58,6 +59,7 @@ extern "C" {
 // kudzu::rpc::KudzuService kudzu_service;
 
 int main() {
+  #pragma message "can print compiler messages with this..."
   // PICO_SDK Inits
   stdio_init_all();
   setup_default_uart();
@@ -65,6 +67,7 @@ int main() {
   const uint WAIT_MS = 1000;
   gpio_init(LED_PIN);
   while (1) {
+    printf("Hello, world!\n");
     gpio_put(LED_PIN, 1);
     sleep_ms(WAIT_MS);
     gpio_put(LED_PIN, 0);
