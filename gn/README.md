@@ -12,7 +12,7 @@ gn gen out
 
 ```
 source activate.sh
-ninja -C out
+ninja -C out apps
 ```
 
 ## Run

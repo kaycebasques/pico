@@ -2,16 +2,24 @@ import("//build_overrides/pigweed.gni")
 import("$dir_pw_build/target_types.gni")
 
 group("all") {
-  deps = [ ":app" ]
+  deps = [
+    ":hello_world"
+  ]
 }
 
-pw_executable("app") {
-  sources = [ "app.cc" ]
-  deps = [ dir_pw_log ]
+pw_executable("hello_world") {
+  sources = [
+    "hello_world.cc"
+  ]
+  deps = [
+    dir_pw_log
+  ]
 }
 
 pw_source_set("my_log_backend") {
-  sources = [ "my_log_backend.c" ]
+  sources = [
+    "my_log_backend.c"
+  ]
 }
 
 pw_source_set("my_log_backend.impl") {

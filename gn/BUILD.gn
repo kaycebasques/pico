@@ -9,14 +9,16 @@ import("$dir_pw_build/python_dist.gni")
 
 group("default") {
   deps = [
-    ":app",
-    ":python.lint",
-    ":python.tests",
+    ":apps",
+    ":python.lint",   # Can maybe delete but won't mess with it for now...
+    ":python.tests",  # Ditto...
   ]
 }
 
-group("app") {
-  deps = [ "//src:app(//targets/host:my_host_toolchain)" ]
+group("apps") {
+  deps = [
+    "//src:hello_world(//targets/host:my_host_toolchain)"
+  ]
 }
 
 ################
@@ -24,5 +26,7 @@ group("app") {
 ################
 
 pw_python_group("python") {
-  python_deps = [ "$dir_pw_env_setup:python" ]
+  python_deps = [
+    "$dir_pw_env_setup:python"
+  ]
 }
