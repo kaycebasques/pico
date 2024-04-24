@@ -28,9 +28,9 @@ const pw::thread::Options& DisplayDrawThreadOptions() {
 }
 
 void MainTask(void*) {
+  PW_LOG_INFO("Hello, world!");
   while (1) {
-    PW_LOG_INFO("Hello, world!");
-    sleep(5);
+    // sleep(5);
   }
 }
 
