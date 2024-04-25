@@ -1,14 +1,7 @@
-// #include <stdio.h>
 #include <array>
 
-// # include "pw_system/rpc_server.h"
-
-// #define PW_LOG_MODULE_NAME "pw_system"
-
 #include "FreeRTOS.h"
-// # include "kudzu/kudzu_service_pwpb.h"
 #include "pico/stdlib.h"
-// #include "pw_log/log.h"
 #include "pw_string/util.h"
 #include "pw_system/init.h"
 #include "task.h"
@@ -56,28 +49,10 @@ void vApplicationGetIdleTaskMemory(StaticTask_t** ppxIdleTaskTCBBuffer,
   *pulIdleTaskStackSize = freertos_idle_stack.size();
 }
 
-// kudzu::rpc::KudzuService kudzu_service;
-
 int main() {
   stdio_init_all();
   setup_default_uart();
-  // const uint LED_PIN = 25;
-  // const uint WAIT_MS = 1000;
-  // gpio_init(LED_PIN);
-  // gpio_set_dir(LED_PIN, GPIO_OUT);
-  // sleep_ms(3000);
-  // gpio_put(LED_PIN, 0);
-  // while (1) {
-  //   printf("Hello, world!\n");
-  //   gpio_put(LED_PIN, 1);
-  //   sleep_ms(WAIT_MS);
-  //   gpio_put(LED_PIN, 0);
-  //   sleep_ms(WAIT_MS);
-  // }
-  // stdio_usb_init();
-  // PW_LOG_INFO("pw_system main");
   pw::system::Init();
-  // pw::system::GetRpcServer().RegisterService(kudzu_service);
   vTaskStartScheduler();
   PW_UNREACHABLE;
 }
