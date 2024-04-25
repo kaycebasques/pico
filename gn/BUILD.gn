@@ -18,8 +18,7 @@ group("default") {
 group("apps") {
   print("dir_pw_third_party/freertos:arm_cm0=$dir_pw_third_party/freertos:arm_cm0")
   deps = [
-    # "//src:hello_world(//targets/host:host)"
-    "//src:hello_world(//targets/rp2040:rp2040.size_optimized)"
+    "//src:blinky(//targets/rp2040:rp2040.size_optimized)"
   ]
 }
 

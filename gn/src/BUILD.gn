@@ -4,13 +4,13 @@ import("$dir_pw_build/target_types.gni")
 
 group("all") {
   deps = [
-    ":hello_world"
+    ":blinky"
   ]
 }
 
-pw_executable("hello_world") {
+pw_executable("blinky") {
   sources = [
-    "hello_world.cc"
+    "blinky.cc"
   ]
   deps = [
     "$PICO_ROOT/src/common/pico_base",
