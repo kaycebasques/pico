@@ -6,8 +6,8 @@
  　 / 　/  ＼＼
     |　ノ　  ヽ_つ
 　 /　/
-　(　(ヽ pigweed+pico
-　|　|、 \  quickstart
-　| 丿 ＼ \  
+　(　(ヽ pigweed
+　|　|、 \ +
+　| 丿 ＼ \ rpi pico
 　| |　　) / 
  ノ_)　　Lﾉ
