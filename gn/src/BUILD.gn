@@ -15,6 +15,7 @@ pw_executable("blinky") {
   deps = [
     "$PICO_ROOT/src/common/pico_base",
     "$PICO_ROOT/src/common/pico_stdlib",
+    "$dir_pw_digital_io_rp2040",
     "$dir_pw_log",
     "$dir_pw_system:target_hooks",
     "$dir_pw_thread:thread",

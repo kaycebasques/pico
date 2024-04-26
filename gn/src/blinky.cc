@@ -5,6 +5,10 @@
 #include "FreeRTOS.h"
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
+// pw_digital_io_rp2040 docs should mention you don't need to explicitly
+// depend on pw_digital_io because it's provided through public deps
+#include "pw_digital_io/polarity.h"
+#include "pw_digital_io_rp2040/digital_io.h"
 #include "pw_log/log.h"
 #include "pw_system/target_hooks.h"
 #include "pw_thread/detached_thread.h"
@@ -28,14 +32,17 @@ const pw::thread::Options& DisplayDrawThreadOptions() {
 }
 
 void MainTask(void*) {
-  const uint LED_PIN = 25;
+  constexpr pw::digital_io::Rp2040Config led_pin_config{
+    .pin = 25,
+    .polarity = pw::digital_io::Polarity::kActiveHigh
+  };
+  pw::digital_io::Rp2040DigitalInOut led_pin(led_pin_config);
+  led_pin.Enable();
   const uint WAIT_MS = 1000;
-  gpio_init(LED_PIN);
-  gpio_set_dir(LED_PIN, GPIO_OUT);
   while (1) {
-    gpio_put(LED_PIN, 1);
+    led_pin.SetState(pw::digital_io::State::kActive);
     sleep_ms(WAIT_MS);
-    gpio_put(LED_PIN, 0);
+    led_pin.SetState(pw::digital_io::State::kInactive);
     sleep_ms(WAIT_MS);
   }
 }
